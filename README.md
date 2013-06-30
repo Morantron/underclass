@@ -104,7 +104,7 @@ var r = new Rectangle(200,150,50,75); // wat?
 ```javascript
 
 var Rectangle = _.class({
-    constructor: function($properties){}
+    constructor: function($$properties){}
 });
 
 var r = new Rectangle({
