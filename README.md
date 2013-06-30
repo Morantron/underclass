@@ -23,7 +23,7 @@ var Pirate = function (name, surname) {
     this.surname = surname;
 };
 
-Pirate.prototype = new Pirate();
+Pirate.prototype = new Person();
 
 Pirate.prototype.say = function(something){
     Person.prototype.say.apply(this, arguments);
@@ -54,18 +54,18 @@ var Pirate = _.class({
 Defining classes
 ----------------
 
-*class* \_.class([baseClass,] definition)
+**class** _.class([baseClass,] definition)
 
-*baseClass:* Class to inherit from.
-*definition:* An object containing the class methods. Class constructor can be specified in the 'initialize' key.
+* **baseClass:** Class to inherit from.
+* **definition:** An object containing the class methods. Class constructor can be specified in the 'initialize' key.
 
 
 Special arguments in class constructor
 --------------------------------------
 
-*Auto-properties: arguments beginning with $*
+**Auto-properties: arguments beginning with `$`**
 
-Every argument in a class constructor that begins with a '$' is automatically asigned to the class instance upon initialization.
+Every argument in a class constructor that begins with a `$` is automatically asigned to the class instance upon initialization.
 
 ```javascript
 var Person = _.class({
@@ -84,9 +84,9 @@ var morgan = new Person("Morgan", "Freeman");
 console.log(morgan.name, morgan.surname) // --> 'Morgan', 'Freeman'
 ```
 
-*Object auto-properties: arguments beginning with $$ ( double dollar )*
+**Object auto-properties: arguments beginning with `$$` ( double dollar )**
 
-An argument begininng with *$$* is assumed to be an object of properties, and each of its properties will be assigned to the class instance upon initialization.
+An argument begininng with `$$` is assumed to be an object of properties, and each of its properties will be assigned to the class instance upon initialization.
 
 This is useful when you have an object as a single argument instead of several ones, as this enhances readibilty when instantiating the object.
 
@@ -118,7 +118,7 @@ var r = new Rectangle({
 Special arguments in methods
 ----------------------------
 
-There are two special arguments when defining methods: 'self' and '_super'. Underclass will look for them and make stuff available for you through this special arguments, but wraps the exposed method in a function so you don't have to care about them when calling methods.
+There are two special arguments when defining methods: `self` and `_super`. Underclass will look for them and make stuff available for you through this special arguments, but wraps the exposed method in a function so you don't have to care about them when calling methods.
 
 This special arguments have to be placed at the beginning of your method definition. These combinations are possible:
 
@@ -128,9 +128,9 @@ This special arguments have to be placed at the beginning of your method definit
     function(_super, ...){ ... }
 ```
 
-*'_super' argument*
+**`_super` argument** 
 
-If you override one of its superclass's methods, you can invoke the overridden method through argument `\_super`.
+If you override one of its superclass's methods, you can invoke the overridden method through argument `_super`.
 
 ```javascript
 
@@ -151,7 +151,7 @@ var Pirate = _.class({
 });
 ```
 
-*'self' argument*
+**`self` argument**
 
 `self` is a reference to the class instance. Using `self` instead of `this` prevents you from having to type the infamous `var that = this`, binding functions, and other stuff.
 
