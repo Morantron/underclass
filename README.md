@@ -42,7 +42,7 @@ var Person = _.class({
     }
 });
 
-var Pirate = _.class({
+var Pirate = _.class(Person, {
     initialize: function($name, $surname){},
     say: function(_super, something){
         _super(something);
