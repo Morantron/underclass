@@ -67,17 +67,40 @@
                     return property.match(keywords.self) || property.match(keywords.super);
                 });
 
+                var props = [];
+
                 _.each(autoProperties, function(property, index) {
                     var match;
                     match = property.match(keywords.autoProperty);
                     if ( match ) {
                         that[match[1]] = _arguments[index];
+                        props.push(match[1]);
                     }
 
                     match = property.match(keywords.autoObjProperty);
                     if ( match && _.isObject(_arguments[index])) {
+                        props.push.apply(props, _.keys(_arguments[index]));
                         _.extend(that, _arguments[index]);
                     }
+                });
+
+                var toUpper = function(string) {return string.toUpperCase()};
+
+                _.each(props, function(prop) {
+
+                    var camelize =  prop.replace(/^./, toUpper);
+                    var get = 'get' + camelize;
+                    var set = 'set' + camelize;
+
+                    if (!that[get])
+                        that[get] = function() {
+                            return this[prop];
+                        };
+                    if (!that[set])
+                        that[set] = function(value) {
+                            this[prop] = value;
+                            return this;
+                        };
                 });
 
                 this.initialize.apply(this, arguments);
@@ -136,7 +159,7 @@
                         _class.prototype[method] = definition[method];
                     }
                 }
-                //store the original unwrapped method 
+                //store the original unwrapped method
                 _class.prototype[method].fn = definition[method];
             });
 
