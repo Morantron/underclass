@@ -1,0 +1,11 @@
+{
+  "name": "underclass",
+  "version": "0.0.0",
+  "description": "A class mixin for underscore.",
+  "main": "underclass.js",
+  "devDependencies":{
+  },
+  "repository": "",
+  "author": "Jorge Morante",
+  "license": "MIT"
+}
