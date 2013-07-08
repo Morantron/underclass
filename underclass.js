@@ -108,7 +108,7 @@
                     _class.prototype[method] = definition[method];
                 } else {
                     //TODO: refactor this shit
-                    if( argNames[0].match(keywords.self)  && argNames[1].match(keywords.super) ){
+                    if( argNames.length >= 2 && argNames[0].match(keywords.self) && argNames[1].match(keywords.super) ){
                         // "self", "super" as first and second argument
                         _class.prototype[method] = function(){
                             var args = _.toArray(arguments);
