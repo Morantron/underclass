@@ -1,4 +1,4 @@
-Underclass: a class mixin for underscore 
+Underclass: a class mixin for underscore
 ========================================
 
 Underclass is a mixin for Underscore that provides some syntactic sugar for declaring classes in JavaScript.
@@ -69,7 +69,7 @@ Every argument in a class constructor that begins with a `$` is automatically as
 
 ```javascript
 var Person = _.class({
-    constructor: function($name, $surname){
+    initialize: function($name, $surname){
         /*
             no need to do this:
 
@@ -95,7 +95,7 @@ An example:
 ```javascript
 
 var Rectangle = _.class({
-    constructor: function($x, $y, $width, $height){}
+    initialize: function($x, $y, $width, $height){}
 });
 
 var r = new Rectangle(200,150,50,75); // wat?
@@ -104,7 +104,7 @@ var r = new Rectangle(200,150,50,75); // wat?
 ```javascript
 
 var Rectangle = _.class({
-    constructor: function($$properties){}
+    initialize: function($$properties){}
 });
 
 var r = new Rectangle({
@@ -128,7 +128,7 @@ This special arguments have to be placed at the beginning of your method definit
     function(_super, ...){ ... }
 ```
 
-**`_super` argument** 
+**`_super` argument**
 
 If you override one of its superclass's methods, you can invoke the overridden method through argument `_super`.
 
